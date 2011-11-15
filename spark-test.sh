@@ -77,3 +77,33 @@ it_zero_range() {
   test $($spark '0,0,0,0')    = '▁▁▁▁'
   test $($spark '0')          = '▁'
 }
+
+it_charts_100_lt_300() {
+  data="1,2,3,4,100,5,10,20,50,300"
+  graph="$($spark $data)"
+
+  test $graph = '▁▁▁▁▃▁▁▁▂▇'
+}
+
+it_charts_50_lt_100() {
+  data="1,50,100"
+  graph="$($spark $data)"
+
+  test $graph = '▁▄▇'
+}
+
+it_charts_4_lt_8() {
+  data="2,4,8"
+  graph="$($spark -z $data)"
+
+  test $graph = '▂▄▇'
+
+}
+
+it_charts_no_tier_0() {
+  data="1,2,3,4,5"
+  graph="$($spark -z $data)"
+
+  test $graph = '▁▂▃▄▅'
+
+}
