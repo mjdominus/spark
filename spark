@@ -46,7 +46,9 @@ EOF
 }
 
 # The actual fun characters we are generating in the sparkline.
-ticks=(▁ ▂ ▃ ▄ ▅ ▆ ▇)
+ticks=(x ▁ ▂ ▃ ▄ ▅ ▆ ▇)
+ticks[0]=' '  # Is this really the only way to do this??
+
 number_of_tiers=$(( ${#ticks[@]} - 1 ))
 # The numbers the user gave us.
 numbers=()
